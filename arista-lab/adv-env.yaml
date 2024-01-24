@@ -2,7 +2,7 @@
 name: ceos-adv-lab
 
 mgmt:
-  network: clab_custom_mgmt
+  network: clab_adv_custom_mgmt
   ipv4-subnet: 192.168.124.0/24
 
 topology:
@@ -21,19 +21,10 @@ topology:
       - interface_mapping.json:/mnt/flash/EosIntfMapping.json:ro
     leaf1:
       mgmt-ipv4: 192.168.124.21
-      startup-config: init-configs/leaf1.cfg
-      binds:
-      # change Ma0 to Ma1
-      - interface_mapping.json:/mnt/flash/EosIntfMapping.json:ro
-    leaf2:
-      mgmt-ipv4: 192.168.124.22
-      startup-config: init-configs/leaf2.cfg
+      startup-config: init-configs/adv/leaf1.cfg
       binds:
       # change Ma0 to Ma1
       - interface_mapping.json:/mnt/flash/EosIntfMapping.json:ro
 
   links:
     - endpoints: ["spine1:eth1_1", "leaf1:eth1_1"]
-    - endpoints: ["spine1:eth2_1", "leaf2:eth1_1"]
-    - endpoints: ["leaf1:eth3_1", "leaf2:eth3_1"]
-    - endpoints: ["leaf1:eth4_1", "leaf2:eth4_1"]
