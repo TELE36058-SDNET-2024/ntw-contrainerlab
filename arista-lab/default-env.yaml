@@ -1,0 +1,21 @@
+---
+name: ceos-lab
+
+mgmt:
+  network: clab_custom_mgmt
+  ipv4-subnet: 192.168.123.0/24
+
+topology:
+  kinds:
+    ceos:
+      image: sebbycorp/ceosimage:latest
+  defaults:
+    kind: ceos
+  nodes:
+    spine1:
+      mgmt-ipv4: 192.168.123.11
+    leaf1:
+      mgmt-ipv4: 192.168.123.21
+
+  links:
+    - endpoints: ["spine1:eth1_1", "leaf1:eth1_1"]
