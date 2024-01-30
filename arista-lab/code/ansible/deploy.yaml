@@ -1,0 +1,15 @@
+---
+- name: Fetch Arista cEOS Switch Configuration
+  hosts: ceos_switches
+  gather_facts: no
+  tasks:
+    - name: Get current running-config
+      eos_command:
+        commands:
+          - show running-config
+      register: output
+
+    - name: Save config to a file
+      copy:
+        content: "{{ output.stdout[0] }}"
+        dest: "ceos_running_config.txt"

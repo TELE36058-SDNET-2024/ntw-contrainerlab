@@ -1,0 +1,2 @@
+[ceos_switches]
+ceos_switch ansible_host=<switch_ip_address> ansible_user=<username> ansible_ssh_pass=<password> ansible_network_os=eos ansible_connection=ansible.netcommon.network_cli
